@@ -152,7 +152,8 @@ body {
 /* Buttons */
 .cta-button-small,
 .cta-button-primary,
-.cta-button-secondary {
+.cta-button-secondary,
+.cta-button-contact {
     padding: 0.625rem 1.25rem;
     border-radius: var(--radius-md);
     font-weight: 600;
@@ -197,6 +198,19 @@ body {
     border-color: var(--primary-color);
     color: var(--primary-color);
     transform: translateY(-2px);
+}
+
+.cta-button-contact {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+}
+
+.cta-button-contact:hover {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(14, 165, 233, 0.4);
 }
 
 .cta-button-primary.large,
