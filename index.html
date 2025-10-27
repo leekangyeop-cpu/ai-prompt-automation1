@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Root Inside - AI 프롬프트 자동화 플랫폼</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <img src="logo.svg" alt="Root Inside Logo" class="logo-image">
+                <span class="logo-text">Root Inside</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#features">기능</a></li>
+                <li><a href="#professions">직군별 지원</a></li>
+                <li><a href="#demo">체험하기</a></li>
+            </ul>
+            <button class="cta-button-small">시작하기</button>
+        </nav>
+    </header>
+
+    <!-- 히어로 섹션 -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    산업별 맞춤 AI 프롬프트<br>
+                    <span class="highlight">자동 생성 플랫폼</span>
+                </h1>
+                <p class="hero-subtitle">
+                    법률, 세무, 컨설팅, 마케팅 등 전문 직군에 최적화된<br>
+                    고품질 프롬프트를 Google Gemini API로 즉시 생성하세요
+                </p>
+                <div class="hero-badges">
+                    <span class="badge">
+                        <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                        Gemini Free API
+                    </span>
+                    <span class="badge">
+                        <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                        </svg>
+                        정확도 제어
+                    </span>
+                    <span class="badge">
+                        <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                        프롬프트 자산화
+                    </span>
+                </div>
+                <div class="hero-actions">
+                    <button class="cta-button-primary" onclick="scrollToDemo()">무료로 시작하기</button>
+                    <button class="cta-button-secondary" onclick="scrollToDemo()">
+                        <span>데모 보기</span>
+                        <span class="arrow">→</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 핵심 가치 제안 -->
+    <section class="value-props">
+        <div class="container">
+            <div class="value-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3>즉시 사용 가능</h3>
+                    <p>복잡한 프롬프트 작성 없이 직군과 업무만 선택하면 전문가 수준의 프롬프트를 자동 생성</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3>도메인 특화</h3>
+                    <p>법률, 세무, 컨설팅 등 각 산업의 요구사항과 규정을 정확히 반영한 맞춤형 프롬프트</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                    <h3>리스크 관리</h3>
+                    <p>고정밀 직군에는 보수적 모드로 안전문구, 근거요청, 불확실성 표기를 자동 포함</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 핵심 기능 -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">핵심 기능</h2>
+                <p class="section-subtitle">전문가 수준의 AI 프롬프트 생성을 위한 완벽한 도구</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h3>직군 기반 프롬프트 생성</h3>
+                    <p>database.json의 common_tasks, key_requirements, required_accuracy, risk_level을 결합해 도메인 특화 프롬프트 자동 생성</p>
+                    <ul class="feature-list">
+                        <li>12개 이상의 전문 직군 지원</li>
+                        <li>산업별 공통 업무 템플릿</li>
+                        <li>핵심 요구사항 자동 반영</li>
+                    </ul>
+                </div>
+                <div class="feature-item">
+                    <h3>정확도/리스크 제어</h3>
+                    <p>고정밀 직군(법률·의료·회계)은 보수적 모드로 안전문구·근거요청·불확실성 표기 포함</p>
+                    <ul class="feature-list">
+                        <li>3단계 정확도 레벨 (High/Medium/Low)</li>
+                        <li>리스크 수준별 자동 조정</li>
+                        <li>환각(Hallucination) 방지 규칙</li>
+                    </ul>
+                </div>
+                <div class="feature-item">
+                    <h3>프롬프트 자산화</h3>
+                    <p>생성된 프롬프트를 JSON으로 저장하여 재사용 가능한 "AI Prompt Asset"으로 관리</p>
+                    <ul class="feature-list">
+                        <li>JSON 형식 저장 및 내보내기</li>
+                        <li>버전 관리 및 이력 추적</li>
+                        <li>팀 내 공유 및 협업</li>
+                    </ul>
+                </div>
+                <div class="feature-item">
+                    <h3>워크스페이스 연동</h3>
+                    <p>Google Docs, Sheets, Apps Script와 연동하여 정형 텍스트 출력 및 자동화 지원</p>
+                    <ul class="feature-list">
+                        <li>Google Workspace 통합</li>
+                        <li>자동화 워크플로우 구축</li>
+                        <li>API 기반 확장성</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 지원 직군 -->
+    <section id="professions" class="professions">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">지원하는 전문 직군</h2>
+                <p class="section-subtitle">각 산업에 특화된 맞춤 프롬프트 생성</p>
+            </div>
+            <div class="professions-grid">
+                <div class="profession-card high-accuracy">
+                    <div class="profession-header">
+                        <svg class="profession-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>
+                        </svg>
+                    </div>
+                    <h3>법률 전문가</h3>
+                    <p>법적 분석, 계약서 검토, 법률 자문 등에 필요한 고정밀 프롬프트</p>
+                    <div class="profession-meta">
+                        <span class="meta-tag">정확도: High</span>
+                        <span class="meta-tag">리스크: High</span>
+                    </div>
+                </div>
+                <div class="profession-card high-accuracy">
+                    <div class="profession-header">
+                        <svg class="profession-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <h3>회계사</h3>
+                    <p>재무제표 분석, 세무 전략, 감사 보고서 작성 전문 프롬프트</p>
+                    <div class="profession-meta">
+                        <span class="meta-tag">정확도: High</span>
+                        <span class="meta-tag">리스크: High</span>
+                    </div>
+                </div>
+                <div class="profession-card high-accuracy">
+                    <div class="profession-header">
+                        <svg class="profession-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                        </svg>
+                    </div>
+                    <h3>의료 전문가</h3>
+                    <p>진단 보조, 의학 문헌 검토, 환자 케어 가이드 생성</p>
+                    <div class="profession-meta">
+                        <span class="meta-tag">정확도: High</span>
+                        <span class="meta-tag">리스크: High</span>
+                    </div>
+                </div>
+                <div class="profession-card">
+                    <div class="profession-header">
+                        <svg class="profession-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        </svg>
+                    </div>
+                    <h3>컨설턴트</h3>
+                    <p>전략 수립, 시장 분석, 비즈니스 제안서 작성 지원</p>
+                    <div class="profession-meta">
+                        <span class="meta-tag">정확도: Medium</span>
+                        <span class="meta-tag">리스크: Medium</span>
+                    </div>
+                </div>
+                <div class="profession-card">
+                    <div class="profession-header">
+                        <svg class="profession-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/>
+                        </svg>
+                    </div>
+                    <h3>마케터</h3>
+                    <p>캠페인 기획, 콘텐츠 제작, 광고 카피 작성 최적화</p>
+                    <div class="profession-meta">
+                        <span class="meta-tag">정확도: Medium</span>
+                        <span class="meta-tag">리스크: Low</span>
+                    </div>
+                </div>
+                <div class="profession-card">
+                    <div class="profession-header">
+                        <svg class="profession-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                        </svg>
+                    </div>
+                    <h3>개발자</h3>
+                    <p>코드 리뷰, 기술 문서 작성, 아키텍처 설계 지원</p>
+                    <div class="profession-meta">
+                        <span class="meta-tag">정확도: Medium</span>
+                        <span class="meta-tag">리스크: Medium</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 데모/체험 섹션 -->
+    <section id="demo" class="demo">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">프롬프트 생성 체험하기</h2>
+                <p class="section-subtitle">직군과 업무를 선택하고 즉시 맞춤 프롬프트를 생성하세요</p>
+            </div>
+            <div class="demo-container">
+                <div class="demo-input">
+                    <div class="form-group">
+                        <label for="profession-select">직군 선택</label>
+                        <select id="profession-select" class="form-control">
+                            <option value="">직군을 선택하세요</option>
+                            <option value="accountant">회계사 (Accountant)</option>
+                            <option value="lawyer">법률 전문가 (Lawyer)</option>
+                            <option value="consultant">컨설턴트 (Consultant)</option>
+                            <option value="marketer">마케터 (Marketer)</option>
+                            <option value="developer">개발자 (Developer)</option>
+                            <option value="doctor">의료 전문가 (Doctor)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="task-input">구체적인 업무</label>
+                        <textarea 
+                            id="task-input" 
+                            class="form-control" 
+                            rows="4" 
+                            placeholder="예: 세무 전략 수립 보고서 초안 작성"
+                        ></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="language-select">출력 언어</label>
+                        <select id="language-select" class="form-control">
+                            <option value="ko">한국어</option>
+                            <option value="en">English</option>
+                        </select>
+                    </div>
+                    <button id="generate-btn" class="cta-button-primary full-width">
+                        프롬프트 생성하기
+                    </button>
+                </div>
+                <div class="demo-output">
+                    <div class="output-header">
+                        <span>생성된 프롬프트</span>
+                        <button id="copy-btn" class="copy-button" disabled>복사</button>
+                    </div>
+                    <div id="output-content" class="output-content">
+                        <div class="placeholder-text">
+                            <svg class="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                            </svg>
+                            <p>왼쪽에서 정보를 입력하고 '프롬프트 생성하기'를 클릭하세요</p>
+                        </div>
+                    </div>
+                    <div id="loading" class="loading" style="display: none;">
+                        <div class="spinner"></div>
+                        <p>프롬프트 생성 중...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA 섹션 -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>지금 바로 시작하세요</h2>
+                <p>전문가 수준의 AI 프롬프트 생성을 경험해보세요.</p>
+                <div class="cta-buttons">
+                    <button class="cta-button-primary large" onclick="scrollToDemo()">시작하기</button>
+                    <button class="cta-button-secondary large" onclick="openContactEmail()">
+                        문의하기
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="logo.svg" alt="Root Inside Logo" class="footer-logo-image">
+                    </div>
+                    <p class="footer-desc">
+                        산업별 맞춤 AI 프롬프트 자동 생성 플랫폼
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>제품</h4>
+                    <ul class="footer-links">
+                        <li><a href="#features">기능</a></li>
+                        <li><a href="#professions">지원 직군</a></li>
+                        <li><a href="#demo">체험하기</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>문의하기</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:contact@rootinsidegroup.com">이메일 문의</a></li>
+                        <li><a href="#" onclick="openContactEmail(); return false;">빠른 문의</a></li>
+                        <li><a href="mailto:contact@rootinsidegroup.com">contact@rootinsidegroup.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Root Inside. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">개인정보처리방침</a>
+                    <a href="#">이용약관</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

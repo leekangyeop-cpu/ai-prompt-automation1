@@ -1,0 +1,30 @@
+<!-- Root Inside Logo SVG -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" class="logo-svg">
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e3a8a;stop-opacity:1" />
+    </linearGradient>
+    <style>
+      .logo-bg { fill: url(#logoGradient); }
+      .logo-text { fill: #ffffff; font-family: 'Georgia', serif; font-weight: 300; }
+      .logo-ri { fill: #ffffff; font-family: 'Georgia', serif; font-weight: 600; letter-spacing: -4px; }
+      .logo-subtitle { fill: #cbd5e1; font-family: 'Arial', sans-serif; font-size: 13px; letter-spacing: 3px; font-weight: 300; }
+      .logo-accent { fill: none; stroke: #3b82f6; stroke-width: 2; opacity: 0.3; }
+    </style>
+  </defs>
+  <rect class="logo-bg" width="500" height="500" rx="12"/>
+  
+  <!-- Decorative accent lines -->
+  <line class="logo-accent" x1="140" y1="180" x2="360" y2="180"/>
+  <line class="logo-accent" x1="140" y1="370" x2="360" y2="370"/>
+  
+  <!-- Main RI text -->
+  <text class="logo-ri" x="250" y="270" text-anchor="middle" font-size="160">RI</text>
+  
+  <!-- ROOT INSIDE text -->
+  <text class="logo-text" x="250" y="315" text-anchor="middle" font-size="28" letter-spacing="5">ROOT INSIDE</text>
+  
+  <!-- Subtitle -->
+  <text class="logo-subtitle" x="250" y="340" text-anchor="middle">BUSINESS CONSULTING</text>
+</svg>
