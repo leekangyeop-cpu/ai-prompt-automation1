@@ -81,6 +81,8 @@ async function generatePrompt() {
     copyBtn.disabled = true;
 
     try {
+        console.log('📤 API 요청 전송:', { profession, task: task.substring(0, 50) + '...', language });
+        
         const response = await fetch(`${API_BASE_URL}/generate`, {
             method: 'POST',
             headers: {
@@ -93,23 +95,60 @@ async function generatePrompt() {
             })
         });
 
+        console.log('📥 응답 상태:', response.status, response.statusText);
+
         if (!response.ok) {
-            throw new Error('프롬프트 생성에 실패했습니다. API 서버가 실행 중인지 확인해주세요.');
+            const errorData = await response.json().catch(() => ({}));
+            throw new Error(errorData.error || errorData.details || '프롬프트 생성에 실패했습니다.');
         }
 
         const data = await response.json();
+        console.log('✅ 프롬프트 생성 성공:', data.metadata);
+        
+        if (!data.success) {
+            throw new Error(data.error || '프롬프트 생성에 실패했습니다.');
+        }
         
         // Display result
-        displayPrompt(data.prompt || data.text);
+        displayPrompt(data.prompt);
 
     } catch (error) {
-        console.error('Error:', error);
+        console.error('❌ 오류:', error);
+        
+        let errorMessage = error.message;
+        let troubleshooting = '';
+        
+        if (error.message.includes('fetch')) {
+            errorMessage = 'API 서버에 연결할 수 없습니다.';
+            troubleshooting = `
+                <div style="text-align: left; margin-top: 1rem; padding: 1rem; background: #fef2f2; border-radius: 0.5rem;">
+                    <p style="font-weight: 600; margin-bottom: 0.5rem;">🔧 해결 방법:</p>
+                    <ol style="margin-left: 1.5rem; line-height: 1.8;">
+                        <li>터미널에서 백엔드 서버가 실행 중인지 확인하세요</li>
+                        <li>명령: <code style="background: #fee; padding: 0.2rem 0.5rem; border-radius: 0.25rem;">node server.js</code></li>
+                        <li>서버 주소: <code style="background: #fee; padding: 0.2rem 0.5rem; border-radius: 0.25rem;">http://localhost:8787</code></li>
+                    </ol>
+                </div>
+            `;
+        } else if (error.message.includes('API')) {
+            troubleshooting = `
+                <div style="text-align: left; margin-top: 1rem; padding: 1rem; background: #fef2f2; border-radius: 0.5rem;">
+                    <p style="font-weight: 600; margin-bottom: 0.5rem;">🔧 해결 방법:</p>
+                    <ol style="margin-left: 1.5rem; line-height: 1.8;">
+                        <li>.env 파일의 GEMINI_API_KEY를 확인하세요</li>
+                        <li>API 키가 유효한지 확인하세요</li>
+                        <li>모델명이 정확한지 확인하세요 (gemini-1.5-flash)</li>
+                    </ol>
+                </div>
+            `;
+        }
         
         // Show error message
         outputContent.innerHTML = `
-            <div style="color: #ef4444; padding: 2rem; text-align: center;">
-                <p style="font-size: 1.125rem; font-weight: 600; margin-bottom: 1rem;">❌ 오류 발생</p>
-                <p style="margin-bottom: 1rem;">${error.message}</p>
+            <div style="color: #dc2626; padding: 2rem; text-align: center;">
+                <p style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem;">❌ 오류 발생</p>
+                <p style="margin-bottom: 0.5rem; font-size: 1rem;">${errorMessage}</p>
+                ${troubleshooting}
             </div>
         `;
         copyBtn.disabled = true;
@@ -136,11 +175,13 @@ function displayPrompt(prompt) {
         .replace(/\[출력 형식\]/g, '<strong style="color: #2563eb;">[출력 형식]</strong>')
         .replace(/\[검증\]/g, '<strong style="color: #2563eb;">[검증]</strong>')
         .replace(/\[후속 액션\]/g, '<strong style="color: #2563eb;">[후속 액션]</strong>')
+        .replace(/\[추천 AI 툴\]/g, '<strong style="color: #10b981; font-size: 1.1em;">🤖 [추천 AI 툴]</strong>')
         .replace(/\[도메인 정보\]/g, '<strong style="color: #2563eb;">[도메인 정보]</strong>')
         .replace(/\[프롬프트 작성 원칙\]/g, '<strong style="color: #2563eb;">[프롬프트 작성 원칙]</strong>')
         .replace(/\[정확성·리스크 제어\]/g, '<strong style="color: #2563eb;">[정확성·리스크 제어]</strong>')
         .replace(/\[환각 방지\]/g, '<strong style="color: #2563eb;">[환각 방지]</strong>')
-        .replace(/\[사용자 요청 Task\]/g, '<strong style="color: #2563eb;">[사용자 요청 Task]</strong>');
+        .replace(/\[사용자 요청 Task\]/g, '<strong style="color: #2563eb;">[사용자 요청 Task]</strong>')
+        .replace(/(\d+\))\s*(역할|목표|컨텍스트|지시사항|제약조건|출력 형식|검증|후속 액션|추천 AI 툴)/g, '<strong style="color: #2563eb;">$1 $2</strong>');
     
     const pre = document.createElement('pre');
     pre.innerHTML = formattedPrompt;
