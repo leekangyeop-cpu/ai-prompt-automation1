@@ -110,10 +110,6 @@ async function generatePrompt() {
             <div style="color: #ef4444; padding: 2rem; text-align: center;">
                 <p style="font-size: 1.125rem; font-weight: 600; margin-bottom: 1rem;">❌ 오류 발생</p>
                 <p style="margin-bottom: 1rem;">${error.message}</p>
-                <p style="font-size: 0.875rem; color: #64748b;">
-                    API 서버를 실행하려면:<br>
-                    터미널에서 <code style="background: #f1f5f9; padding: 0.25rem 0.5rem; border-radius: 0.25rem;">npm start</code> 명령을 실행하세요
-                </p>
             </div>
         `;
         copyBtn.disabled = true;
