@@ -94,7 +94,7 @@ async function generatePrompt() {
         });
 
         if (!response.ok) {
-            throw new Error('프롬프트 생성에 실패했습니다.');
+            throw new Error('프롬프트 생성에 실패했습니다. API 서버가 실행 중인지 확인해주세요.');
         }
 
         const data = await response.json();
@@ -105,8 +105,18 @@ async function generatePrompt() {
     } catch (error) {
         console.error('Error:', error);
         
-        // Show demo output if API is not available
-        showDemoOutput(profession, task, language);
+        // Show error message
+        outputContent.innerHTML = `
+            <div style="color: #ef4444; padding: 2rem; text-align: center;">
+                <p style="font-size: 1.125rem; font-weight: 600; margin-bottom: 1rem;">❌ 오류 발생</p>
+                <p style="margin-bottom: 1rem;">${error.message}</p>
+                <p style="font-size: 0.875rem; color: #64748b;">
+                    API 서버를 실행하려면:<br>
+                    터미널에서 <code style="background: #f1f5f9; padding: 0.25rem 0.5rem; border-radius: 0.25rem;">npm start</code> 명령을 실행하세요
+                </p>
+            </div>
+        `;
+        copyBtn.disabled = true;
     } finally {
         // Reset button state
         generateBtn.disabled = false;
@@ -143,71 +153,6 @@ function displayPrompt(prompt) {
     
     outputContent.appendChild(pre);
     copyBtn.disabled = false;
-}
-
-// Demo Output (when API is not available)
-function showDemoOutput(profession, task, language) {
-    const professionNames = {
-        'accountant': '회계사',
-        'lawyer': '법률 전문가',
-        'consultant': '컨설턴트',
-        'marketer': '마케터',
-        'developer': '개발자',
-        'doctor': '의료 전문가'
-    };
-
-    const demoPrompt = `[역할]
-당신은 "${professionNames[profession] || profession}" 도메인에 특화된 상급 프롬프트 엔지니어입니다.
-
-[목표]
-사용자의 구체 업무에 맞춰, 도메인 요구사항을 반영한 고정밀 프롬프트를 ${language === 'en' ? 'English' : 'Korean'}로 생성합니다.
-
-[도메인 정보]
-- 정확도 요구: High / Medium
-- 리스크 수준: High / Medium / Low
-- 업무: ${task}
-
-[지시사항]
-1. 사용자가 요청한 업무에 대해 명확하고 구체적인 지침을 제공하세요.
-2. 해당 직군의 전문 용어와 표준 절차를 반영하세요.
-3. 필요한 입력 정보와 예상 출력 형식을 명시하세요.
-4. 단계별 작업 흐름을 제시하세요.
-
-[제약조건]
-- 법률, 규정, 윤리 기준을 준수해야 합니다.
-- 불확실한 정보는 추정하지 말고 명시적으로 표기하세요.
-- 고위험 직군의 경우 보수적이고 안전한 접근을 취하세요.
-- 근거와 출처를 명확히 제시하세요.
-
-[출력 형식]
-1) 서론 및 배경
-2) 핵심 분석 내용
-3) 권고 사항
-4) 참고 자료 및 법령
-5) 검증 체크리스트
-
-[검증]
-- 모든 주장에 대해 근거를 제시했는가?
-- 관련 법규와 규정을 확인했는가?
-- 불확실성을 명확히 표기했는가?
-- 전문가 검토가 필요한 부분을 명시했는가?
-
-[후속 액션]
-- 생성된 문서를 Google Docs로 내보내기
-- 관련 이해관계자와 검토 및 협의
-- 최종 승인 및 실행
-
----
-
-💡 참고: 이 프롬프트는 Root Inside에서 자동 생성되었습니다.
-실제 API 서버가 실행 중이라면 더 상세하고 맞춤화된 프롬프트가 생성됩니다.
-
-📌 API 서버 실행 방법:
-1. .env 파일에 GEMINI_API_KEY 설정
-2. npm start 명령으로 서버 실행
-3. localhost:8787에서 API 사용`;
-
-    displayPrompt(demoPrompt);
 }
 
 // Copy to Clipboard
